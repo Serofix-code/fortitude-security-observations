@@ -62,9 +62,11 @@ Because port 443 traffic was encrypted and only connection metadata was collecte
 
 No third-party player information is reproduced here.
 
-## Local antivirus result
+## Local antivirus result and critical limitation
 
-Local security scanning returned no harmful-item detections in the tested scope. This is useful context but not a clean bill of health: heavily packed code is inherently harder for both manual static analysis and signature-based scanners to evaluate.
+An F-Secure full-computer scan reported no harmful items among 2,157,035 scanned items. However, it also reported 236,484 items not scanned, and its explicit exclusion list included the Fortitude launcher and the directory containing Fortitude's data and injected DLL.
+
+The result therefore provides **no meaningful antivirus assurance about the principal Fortitude files examined in this report**. It establishes only that F-Secure found no harmful items among the non-excluded material it successfully scanned. Heavy packing would further limit how reassuring a negative static result could be even if these samples were submitted separately.
 
 ## Interpretation
 
@@ -73,7 +75,7 @@ Local security scanning returned no harmful-item detections in the tested scope.
 - The launcher-only test showed a single conventional HTTPS destination rather than multiple random or residential peers.
 - No persistence mechanism was found.
 - No readable credential-stealing logic or obvious exfiltration endpoint was identified.
-- Local security scans returned no detection.
+- No harmful items were found elsewhere in the completed F-Secure scan, although the principal Fortitude paths were excluded and this does not reduce uncertainty about Fortitude itself.
 
 ### Findings that increase concern
 
@@ -97,4 +99,3 @@ Local security scanning returned no harmful-item detections in the tested scope.
 The observations do not demonstrate credential theft or prove that Fortitude is malware. They also do not establish that it is safe. Fortitude is high-trust software: an unsigned, heavily protected DLL is injected into a game process, while important behavior remains unavailable for ordinary inspection. A controlled in-game runtime analysis would be required to observe the injected component's actual network and filesystem behavior.
 
 Corrections, reproducible counter-evidence, and technical responses from Fortitude's developers are welcome.
-
