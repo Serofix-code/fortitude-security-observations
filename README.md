@@ -68,6 +68,10 @@ An F-Secure full-computer scan reported no harmful items among 2,157,035 scanned
 
 The result therefore provides **no meaningful antivirus assurance about the principal Fortitude files examined in this report**. It establishes only that F-Secure found no harmful items among the non-excluded material it successfully scanned. Heavy packing would further limit how reassuring a negative static result could be even if these samples were submitted separately.
 
+Historical F-Secure reports from July 2025 repeatedly labelled an older installed `Fortitude.exe` as `HEUR/APC`. F-Secure describes `HEUR/APC` as a generic heuristic detection triggered by instructions associated with harmful behavior or behavior resembling known harmful programs; its own documentation also acknowledges that false positives are possible. This is materially different from identifying a specific named malware family. It is compatible with concern about the packed injector, but it does not by itself decide whether the detection was a true positive.
+
+The system owner reports using Fortitude for approximately two to three years across two PCs, including roughly one year on the analyzed PC, without noticing account compromise or other obvious harm. That history lowers the likelihood of noisy, immediately destructive behavior, but remains anecdotal: quiet telemetry, selective behavior, and information access can be difficult to notice, and Fortitude builds can change over time.
+
 ## Interpretation
 
 ### Findings that reduce concern
@@ -76,12 +80,14 @@ The result therefore provides **no meaningful antivirus assurance about the prin
 - No persistence mechanism was found.
 - No readable credential-stealing logic or obvious exfiltration endpoint was identified.
 - No harmful items were found elsewhere in the completed F-Secure scan, although the principal Fortitude paths were excluded and this does not reduce uncertainty about Fortitude itself.
+- Long-term use across two PCs reportedly produced no obvious incident, although this cannot verify silent behavior or later builds.
 
 ### Findings that increase concern
 
 - Both principal components were unsigned.
 - Extensive packing and anti-analysis protection concealed the core behavior.
 - The protected DLL has injection and networking capabilities and was automatically replaced by the launcher.
+- An older Fortitude build repeatedly triggered F-Secure's generic `HEUR/APC` heuristic detection.
 - Plaintext logs retained player IP addresses and identifiers.
 - Submitted crash reports may contain sensitive runtime state; their exact contents and server-side retention are unknown.
 
